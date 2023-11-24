@@ -1,9 +1,9 @@
 #source file search paths
-VPATH = ./src 
+VPATH = ./src ../PathFinder/src
 
 	# compiler include search paths
 INCS = -I./include \
-	-I../windex/include \
+	-I../PathFinder/src \
 	-I../raven-set \
 
 LIBS = \
@@ -20,7 +20,9 @@ CCflags = -std=c++17 $(OPT) -D_mingw_
 
 # sources
 OBJ_starter = \
-	$(ODIR)/main.o 
+	$(ODIR)/main.o \
+	$(ODIR)/cGraph.o \
+	$(ODIR)/GraphTheory.o \
 
 ### COMPILE
 
@@ -30,7 +32,7 @@ $(ODIR)/%.o: %.cpp
 
 starter: $(OBJ_starter)
 	g++ $(OPT) \
-	-o bin/starter.exe $^  \
+	-o bin/trader.exe $^  \
 	$(static_link_flags) $(LIBS)
 
 .PHONY: clean
